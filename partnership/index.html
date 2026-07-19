@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoAsia Initiative | Greenpeak Transformation</title>
+    <link rel="icon" type="image/png" href="images/greenpeak_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #2d5f3f;
+            --accent-green: #4a8358;
+            --dark-brown: #3e2723;
+            --cream: #f5f1e8;
+            --text-dark: #2a2a2a;
+            --white: #ffffff;
+            --light-gray: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: var(--white);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            margin-top: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Header Styles --- */
+        header {
+            background: var(--white);
+            padding: 1.5rem 5%;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        /* Creates space above sections when clicking navigation links */
+        section {
+            scroll-margin-top: 50px; /* Adjust this number if you want more or less space! */
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* --- Website Navigation Bar Styles --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 100px;
+            height: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Standalone Highlighted GeoAsia Button */
+        .nav-links a.nav-cta {
+            background-color: var(--primary-green);
+            color: var(--white) !important;
+            padding: 0.65rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(45, 95, 63, 0.22);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            line-height: 1.2;
+        }
+
+        .nav-links a.nav-cta:hover {
+            background-color: var(--accent-green);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(45, 95, 63, 0.35);
+        }
+
+        .nav-links a.nav-cta:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(45, 95, 63, 0.25);
+        }
+
+        .nav-links a.nav-cta::after {
+            display: none !important;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        /* --- Page Layout & Sections --- */
+        main {
+            flex: 1;
+        }
+
+        section {
+            padding: 5rem 5%;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Hero / Intro Section */
+        .hero-section {
+            text-align: center;
+            background: var(--cream);
+            
+            /* Increased top padding from 6rem to 10rem to give the header breathing room */
+            padding: 10rem 5% 8rem 5%; 
+            
+            border-bottom: 4px solid var(--primary-green);
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--accent-green);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* Hero Image Enhancement */
+        .hero-image-wrapper {
+            margin-top: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Mission & Vision Grid */
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: -5rem; /* Pulled up higher to overlay cleanly below the hero image */
+            position: relative;
+            z-index: 10;
+        }
+
+        .mv-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--accent-green);
+        }
+
+        .mv-card h3 {
+            color: var(--primary-green);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* What We Do Section */
+        .what-we-do-section {
+            background: var(--white);
+            padding-top: 7rem;
+        }
+
+        .section-header {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-item {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centered horizontally */
+            text-align: center;      /* Centered multi-line text */
+            border-left: 4px solid var(--accent-green);
+            font-weight: 500;
+        }
+
+        /* Strategic Partnerships */
+        .partnership-section {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 6rem 5%;
+            text-align: center;
+        }
+
+        .partnership-section h2 {
+            color: var(--cream);
+            font-size: 2.5rem;
+        }
+
+        .partnership-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 3rem auto 0;
+            text-align: left;
+        }
+
+        .partnership-box strong {
+            color: var(--cream);
+            font-size: 1.1rem;
+        }
+
+        /* Highlight Products Grid */
+        .products-section {
+            background: var(--cream);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            overflow: hidden; /* Keeps image corners aligned with card radius */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .product-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-card-content {
+            padding: 2rem;
+            flex-grow: 1;
+        }
+
+        .product-card h4 {
+            color: var(--accent-green);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--cream);
+            padding-bottom: 0.5rem;
+        }
+
+        .conclusion-text {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid #eaeaea;
+        }
+
+        /* --- Footer Styles --- */
+        footer {
+            background: var(--dark-brown);
+            color: var(--white);
+            padding: 3rem 5% 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-bottom {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mv-grid {
+                grid-template-columns: 1fr;
+                margin-top: 2rem;
+            }
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-image-wrapper {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="https://greenpeaktransform.com/#home" class="logo">
+                <img src="images/greenpeak_logo.png" alt="GreenPeak Logo" class="logo-icon">
+                <span>Greenpeak Transformation</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="https://greenpeaktransform.com/#home">Home</a></li>
+                <li><a href="https://greenpeaktransform.com/#about">About</a></li>
+                <li><a href="https://greenpeaktransform.com/#products">Products</a></li>
+                <li><a href="https://greenpeaktransform.com/#catalog">Catalog</a></li>
+                <li><a href="https://greenpeaktransform.com/#contact">Contact</a></li>
+                <li><a href="index.html" class="nav-cta">GeoAsia</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1><i>GeoAsia Initiative</i></h1>
+                <p class="hero-subtitle">Building Bridges Between Thailand, Georgia, Central Asia, and South Asia</p>
+                <p class="hero-text">
+                    The GeoAsia Initiative defines an international collaboration established with Casus Group LLC, Georgia. 
+                    We are in partnership with private sector organizations and government stakeholders, with the initiative itself supported by the Department of International Trade Promotion (DITP), Ministry of Commerce, the Royal Thai Government – Ankara and Chennai Office. 
+                    The fundamental aim concerns sectors such as trade, investment, tourism, and economic cooperation across emerging markets, prioritizing the use of eco-friendly resources in facilitating them.
+                </p>
+                
+                <div class="hero-image-wrapper">
+                    <img src="images/Hero.png" alt="GeoAsia Initiative Global Trade Corridor">
+                </div>
+            </div>
+        </section>
+
+        <section style="padding-top: 0; padding-bottom: 2rem;">
+            <div class="container mv-grid">
+                <div class="mv-card">
+                    <h3>Our Mission</h3>
+                    <p>We aim to strengthen cultural connectivity intercontinentally for businesses seeking regional expansion. This currently includes Thailand, Georgia, Central Asia, the Caucasus, and South Asia.</p>
+                </div>
+                <div class="mv-card">
+                    <h3>Our Vision</h3>
+                    <p>By positioning Thailand as the gateway to ASEAN while also establishing Georgia as the strategic gateway to the Caucasus and Central Asia, we actively create a trade corridor that enables businesses to access new markets efficiently.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="what-we-do-section">
+            <div class="container">
+                <h2 class="section-header">What We Do</h2>
+                <p style="text-align: center; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">To achieve our goals, we strive to establish our presence in a variety of important developmental areas: </p>
+                
+                <div class="services-grid">
+                    <div class="service-item">International trade and investment partnerships</div>
+                    <div class="service-item">Market entry and business matching programs</div>
+                    <div class="service-item">Distribution and retail network development</div>
+                    <div class="service-item">Cross-border logistics and supply chain solutions</div>
+                    <div class="service-item">Tourism promotion and business delegation programs</div>
+                    <div class="service-item">Government-to-business (G2B) & B2B collaboration</div>
+                    <div class="service-item">Product localization and regional market expansion</div>
+                </div>
+            </div>
+        </section>
+<!-- 
+        <section class="partnership-section">
+            <div class="container">
+                <h2>Globalization with Greenpeak</h2>
+                <p style="max-width: 800px; margin: 0 auto; opacity: 0.9;">The initiative works closely with government agencies each step of the way. Chambers of commerce, retailers, manufacturers, investors, and logistics partners work to contribute to successful globalised distribution. </p>
+                
+                <div class="partnership-box">
+                    <strong>Highlight Collaboration:</strong>
+                    <p style="margin-top: 0.5rem;">Here at Greenpeak, we are committed to building a meaningful relationship between Thailand and Sri Lanka, helping Thai brands establish a strong market presence through trusted retail partnerships, efficient distribution networks, and carefully tailored local market strategies that create lasting value for businesses and consumers alike.</p>
+                </div>
+            </div>
+        </section> -->
+
+        <section class="products-section">
+            <div class="container">
+                <h2 class="section-header">Highlight Product Categories</h2>
+                <p style="text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">The GeoAsia Initiative focuses on promoting high-potential Thai products that meet international quality standards and growing consumer demand across Georgia, Central Asia, the Caucasus, and South Asia.</p>
+                
+                <div class="products-grid">
+                    
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="images/RTE_Frozen.png" alt="Ready-to-Eat Frozen Foods">
+                        </div>
+                        <div class="product-card-content">
+                            <h4>Ready-to-Eat Frozen Foods</h4>
+                            <p>Authentic Thai cuisine, frozen meals, ready-to-cook products, seafood, and convenience foods.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="images/Functional_Bev.png" alt="Functional Beverages">
+                        </div>
+                        <div class="product-card-content">
+                            <h4>Functional Beverages</h4>
+                            <p>Health-focused drinks, vitamin beverages, herbal drinks, energy drinks, electrolyte drinks, and wellness beverages.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="images/Functional_Food.png" alt="Functional Foods">
+                        </div>
+                        <div class="product-card-content">
+                            <h4>Functional Foods</h4>
+                            <p>Nutritional products, fortified foods, healthy snacks, plant-based innovations, diabetic-friendly and wellness-oriented food solutions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="images/Healthcare.png" alt="Healthcare & Medical Products">
+                        </div>
+                        <div class="product-card-content">
+                            <h4>Healthcare & Medical</h4>
+                            <p>Medical devices, wound care innovations, hygiene solutions, rehabilitation products, and wellness technologies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="images/Rubber.png" alt="Rubber & Rubber Products">
+                        </div>
+                        <div class="product-card-content">
+                            <h4>Rubber & Rubber Products</h4>
+                            <p>Natural and industrial rubber, automotive components, medical-grade rubber products, gloves, and value-added rubber innovations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="images/Consumer.png" alt="Consumer & Lifestyle Goods">
+                        </div>
+                        <div class="product-card-content">
+                            <h4>Consumer & Lifestyle</h4>
+                            <p>Premium Thai products with strong export potential across retail and modern trade channels.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="conclusion-text">
+                    <p style="margin-bottom: 1rem;">Through strategic partnerships with manufacturers, retailers, distributors, and government agencies, <strong>Casus Group LLC</strong> helps qualified businesses enter new markets by providing market access, business matching, regulatory guidance, logistics support, and distribution network development.</p>
+                    <p><strong>Our objective is to position Thai innovation and high-value products in fast-growing international markets while creating sustainable trade opportunities for partners throughout the region.</strong></p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h3 style="color: var(--cream); margin-bottom: 1rem;">GeoAsia Initiative</h3>
+            <p>Growing together for a sustainable future.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Casus Group LLC. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
